@@ -29,6 +29,45 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Patch on_audio_query namespace for AGP 8+
+        run: |
+          # Find on_audio_query_android's build.gradle in pub cache and inject namespace
+          PLUGIN_DIR=$(find "$HOME/.pub-cache/hosted/pub.dev" -maxdepth 1 -name "on_audio_query_android-*" -type d | head -1)
+          if [ -n "$PLUGIN_DIR" ]; then
+            BUILD_FILE="$PLUGIN_DIR/android/build.gradle"
+            if [ -f "$BUILD_FILE" ]; then
+              # Check if namespace is already present
+              if ! grep -q 'namespace' "$BUILD_FILE"; then
+                # Extract package from AndroidManifest.xml
+                MANIFEST="$PLUGIN_DIR/android/src/main/AndroidManifest.xml"
+                if [ -f "$MANIFEST" ]; then
+                  PKG=$(grep -oP 'package="\K[^"]+' "$MANIFEST")
+                  if [ -n "$PKG" ]; then
+                    # Inject namespace into android block
+                    sed -i "s|android {|android {\n    namespace '$PKG'|" "$BUILD_FILE"
+                    echo "Injected namespace '$PKG' into $BUILD_FILE"
+                  fi
+                fi
+              fi
+            fi
+          fi
+          
+          # Also patch on_audio_query_platform_interface if needed
+          PLATFORM_DIR=$(find "$HOME/.pub-cache/hosted/pub.dev" -maxdepth 1 -name "on_audio_query_platform_interface-*" -type d | head -1)
+          if [ -n "$PLATFORM_DIR" ]; then
+            BUILD_FILE="$PLATFORM_DIR/android/build.gradle"
+            if [ -f "$BUILD_FILE" ] && ! grep -q 'namespace' "$BUILD_FILE"; then
+              MANIFEST="$PLATFORM_DIR/android/src/main/AndroidManifest.xml"
+              if [ -f "$MANIFEST" ]; then
+                PKG=$(grep -oP 'package="\K[^"]+' "$MANIFEST")
+                if [ -n "$PKG" ]; then
+                  sed -i "s|android {|android {\n    namespace '$PKG'|" "$BUILD_FILE"
+                  echo "Injected namespace '$PKG' into $BUILD_FILE"
+                fi
+              fi
+            fi
+          fi
+
       - name: Analyze
         run: flutter analyze --no-fatal-infos
 
