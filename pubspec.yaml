@@ -1,0 +1,30 @@
+name: vibeland
+description: "Vibeland - A local music player with Dynamic Island"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  on_audio_query: ^2.9.0
+  just_audio: ^0.9.40
+  audio_service: ^0.18.15
+  permission_handler: ^11.3.1
+  flutter_overlay_window: ^0.4.5
+  provider: ^6.1.2
+  google_fonts: ^6.2.1
+  path: ^1.9.0
+  shared_preferences: ^2.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

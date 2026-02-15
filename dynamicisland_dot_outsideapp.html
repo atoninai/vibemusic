@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vibeland Home Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5b13ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#161022",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Spline Sans', sans-serif;
+        }
+        .glass-dock {
+            background: rgba(22, 16, 34, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .dynamic-island {
+            background: #000000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .wallpaper-gradient {
+            background: radial-gradient(circle at top right, #2d1b4d 0%, #161022 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-white overflow-hidden">
+<!-- Main Device Wrapper -->
+<div class="relative flex h-screen w-full flex-col wallpaper-gradient overflow-hidden select-none">
+<!-- Status Bar Area -->
+<div class="flex items-center justify-between px-8 pt-4 pb-2 z-50">
+<!-- Time -->
+<div class="text-white text-sm font-bold w-12 text-left">9:41</div>
+<!-- Dynamic Island (Pill State) -->
+<div class="dynamic-island flex items-center justify-between px-3 py-1.5 h-7 w-32 rounded-full shadow-2xl group cursor-pointer hover:w-36">
+<div class="flex items-center gap-1.5">
+<div class="size-4 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white">graphic_eq</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<div class="h-2 w-0.5 bg-primary rounded-full"></div>
+<div class="h-3 w-0.5 bg-primary/60 rounded-full"></div>
+<div class="h-1.5 w-0.5 bg-primary/40 rounded-full"></div>
+<div class="ml-1 size-1.5 bg-primary rounded-full animate-pulse"></div>
+</div>
+</div>
+<!-- Indicators -->
+<div class="flex w-12 items-center justify-end gap-1.5">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="material-symbols-outlined text-sm">battery_full</span>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-1 px-6 pt-8 pb-32">
+<!-- App Icon Grid -->
+<div class="grid grid-cols-4 gap-x-4 gap-y-8 max-w-md mx-auto">
+<!-- App Item -->
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg" data-alt="Blue mail app icon with white envelope">
+<span class="material-symbols-outlined text-3xl">mail</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Mail</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-white flex flex-col items-center justify-center shadow-lg overflow-hidden" data-alt="White calendar icon showing current date">
+<span class="text-red-500 text-[10px] font-bold uppercase mt-1">Tue</span>
+<span class="text-black text-2xl font-bold leading-none">12</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Calendar</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-white flex items-center justify-center shadow-lg overflow-hidden" data-alt="Colorful stylized flower logo for photos app">
+<span class="material-symbols-outlined text-3xl text-orange-400">filter_vintage</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Photos</p>
+</div>
+<!-- Vibeland App -->
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/40 relative" data-alt="Dark purple app icon with white wave logo">
+<span class="material-symbols-outlined text-3xl text-white">vibration</span>
+<div class="absolute -top-1 -right-1 size-5 bg-red-500 rounded-full border-2 border-background-dark flex items-center justify-center">
+<span class="text-[10px] font-bold">1</span>
+</div>
+</div>
+<p class="text-[11px] font-medium text-white/90">Vibeland</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-yellow-400 flex items-center justify-center shadow-lg" data-alt="Yellow notepad style app icon">
+<span class="material-symbols-outlined text-3xl text-white">description</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Notes</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-white flex items-center justify-center shadow-lg" data-alt="Blue circular icon for reminders">
+<span class="material-symbols-outlined text-3xl text-blue-500">checklist</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Reminders</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-green-500 flex items-center justify-center shadow-lg" data-alt="Green map and location pin icon">
+<span class="material-symbols-outlined text-3xl text-white">map</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Maps</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-gradient-to-b from-blue-300 to-blue-500 flex items-center justify-center shadow-lg" data-alt="Blue sky with white cloud weather icon">
+<span class="material-symbols-outlined text-3xl text-white">cloud</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Weather</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-orange-400 flex items-center justify-center shadow-lg" data-alt="Orange home icon for automation app">
+<span class="material-symbols-outlined text-3xl text-white">home_filled</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Home</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-black flex items-center justify-center shadow-lg" data-alt="Black wallet app icon with colorful cards">
+<span class="material-symbols-outlined text-3xl text-white">account_balance_wallet</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Wallet</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-white flex items-center justify-center shadow-lg" data-alt="White health app icon with red heart">
+<span class="material-symbols-outlined text-3xl text-red-500">favorite</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Health</p>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+<div class="aspect-square w-full rounded-xl bg-gray-400 flex items-center justify-center shadow-lg" data-alt="Gray gear system settings icon">
+<span class="material-symbols-outlined text-3xl text-white">settings</span>
+</div>
+<p class="text-[11px] font-medium text-white/90">Settings</p>
+</div>
+</div>
+<!-- Pagination Dots -->
+<div class="flex w-full flex-row items-center justify-center gap-2 py-8">
+<div class="h-1.5 w-1.5 rounded-full bg-white"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/30"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/30"></div>
+</div>
+</main>
+<!-- Bottom Dock -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md h-24 glass-dock rounded-xl flex items-center justify-around px-4 z-40">
+<div class="flex flex-col items-center justify-center gap-1 flex-1">
+<div class="bg-green-500 rounded-lg size-14 flex items-center justify-center shadow-lg" data-alt="Green phone call icon">
+<span class="material-symbols-outlined text-3xl text-white">call</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 flex-1">
+<div class="bg-green-500 rounded-lg size-14 flex items-center justify-center shadow-lg" data-alt="Green message bubble icon">
+<span class="material-symbols-outlined text-3xl text-white">chat_bubble</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 flex-1">
+<div class="bg-white rounded-lg size-14 flex items-center justify-center shadow-lg overflow-hidden" data-alt="Blue safari compass icon">
+<span class="material-symbols-outlined text-3xl text-blue-500">explore</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 flex-1">
+<div class="bg-gradient-to-tr from-pink-500 to-red-500 rounded-lg size-14 flex items-center justify-center shadow-lg" data-alt="Red music note app icon">
+<span class="material-symbols-outlined text-3xl text-white">music_note</span>
+</div>
+</div>
+</div>
+<!-- Home Indicator -->
+<div class="fixed bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full z-50"></div>
+</div>
+</body></html>
